@@ -1,0 +1,129 @@
+<admintpl file="header"/>
+</head>
+<body>
+<div class="wrap">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <form class="form-horizontal js-ajax-form" action="{:U('setting/site_post')}" method="post">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        {:L('WEB_SITE_INFOS')}
+                    </div>
+                    <div class="panel-body">
+                        <div class="tab-pane active" id="A">
+                            <div class="control-group">
+                                <label class="control-label">{:L('WEBSITE_NAME')}</label>
+
+                                <div class="controls">
+                                    <input type="text" name="options[site_name]" value="{$site_name}"><span class="form-required">*</span>
+                                    <php>if($option_id):</php>
+                                    <input type="hidden" name="option_id" value="{$option_id}">
+                                    <php>endif;</php>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{:L('WEBSITE_DOMAIN')}</label>
+
+                                <div class="controls">
+                                    <input type="text" name="options[site_host]" value="{$site_host}"><span class="form-required">*</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{:L('WEBSITE_THEME')}</label>
+
+                                <div class="controls">
+                                    <select name="options[site_tpl]">
+                                        <foreach name="templates" item="vo">
+                                            <php>$tpl_selected=$site_tpl==$vo?"selected":"";</php>
+                                            <option value="{$vo}" {$tpl_selected}>{$vo}</option>
+                                        </foreach>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">{:L('WEBSITE_ADMIN_THEME')}</label>
+
+                                <div class="controls">
+                                    <select name="options[site_adminstyle]">
+                                        <foreach name="adminstyles" item="vo">
+                                            <php>$adminstyle_selected=$site_adminstyle==$vo?"selected":"";
+                                            </php>
+                                            <option value="{$vo}" {$adminstyle_selected}>{$vo}</option>
+                                        </foreach>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{:L('HTML_CACHE')}：</label>
+
+                                <div class="controls">
+                                    <php>$html_cache_on_checked=empty($html_cache_on)?'':'checked';</php>
+                                    <label class="checkbox inline"><input type="checkbox" name="options[html_cache_on]" value="1" {$html_cache_on_checked}></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="B">
+                            <fieldset>
+                                <div class="control-group">
+                                    <label class="control-label">{:L('WEBSITE_SEO_TITLE')}</label>
+
+                                    <div class="controls">
+                                        <input type="text" name="options[site_seo_title]" value="{$site_seo_title}">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">{:L('WEBSITE_SEO_KEYWORDS')}</label>
+
+                                    <div class="controls">
+                                        <input type="text" name="options[site_seo_keywords]" value="{$site_seo_keywords}">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">{:L('WEBSITE_SEO_DESCRIPTION')}</label>
+
+                                    <div class="controls">
+                                        <textarea name="options[site_seo_description]" rows="5" cols="57">{$site_seo_description}</textarea>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="tab-pane" id="C">
+                            <div class="control-group">
+                                <label class="control-label">{:L('URL_MODE')}</label>
+
+                                <div class="controls">
+                                    <php>$urlmodes=array( "0"=>L('URL_NORMAL_MODE'),
+                                        "1"=>L('URL_PATHINFO_MODE'), "2"=>L('URL_REWRITE_MODE'));
+                                    </php>
+                                    <select name="options[urlmode]">
+                                        <foreach name="urlmodes" item="vo">
+                                            <php>$urlmode_selected=$key==$urlmode?"selected":"";</php>
+                                            <option value="{$key}" {$urlmode_selected}>{$vo}</option>
+                                        </foreach>
+                                    </select>
+                                    <span class="form-required">* {:L('URL_MODE_HELP_TEXT')}</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">{:L('URL_REWRITE_SUFFIX')}</label>
+
+                                <div class="controls">
+                                    <input type="text" name="options[html_suffix]" value="{$html_suffix}">
+                                    <span class="form-required">{:L('URL_REWRITE_SUFFIX_HELP_TEXT')}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-footer">
+                        <button type="submit" class="btn btn-primary js-ajax-submit">{:L("SAVE")}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

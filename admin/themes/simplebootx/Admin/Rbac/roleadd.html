@@ -1,0 +1,49 @@
+<admintpl file="header"/>
+</head>
+<body>
+<div class="wrap js-check-wrap">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <form class="form-horizontal js-ajax-form" action="{:U('Rbac/roleadd_post')}" method="post">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        {:L('ADMIN_RBAC_ROLEADD')}
+                    </div>
+                    <div class="panel-body">
+                        <div class="control-group">
+                            <label class="control-label">{:L('ROLE_NAME')}</label>
+
+                            <div class="controls">
+                                <input type="text" name="name" value="" id="rolename"/>
+                                <span class="form-required">*</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{:L('ROLE_DESCRIPTION')}</label>
+
+                            <div class="controls">
+                                <textarea name="remark" rows="2" cols="20" id="remark" class="inputtext" style="height: 100px; width: 500px;"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">{:L('STATUS')}</label>
+
+                            <div class="controls">
+                                <label class="radio inline" for="active_true"><input type="radio" name="status" value="1" checked id="active_true"/>{:L('ENABLED')}</label>
+                                <label class="radio inline" for="active_false"><input type="radio" name="status" value="0" id="active_false">{:L('DISABLED')}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

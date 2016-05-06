@@ -1,0 +1,60 @@
+<admintpl file="header"/>
+</head>
+<body>
+<div class="wrap">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    {:L('ADMIN_RBAC_INDEX')}
+                </div>
+
+                <div class="panel-body">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <th width="30">ID</th>
+                            <th align="left">{:L('ROLE_NAME')}</th>
+                            <th align="left">{:L('ROLE_DESCRIPTION')}</th>
+                            <th width="60" align="left">{:L('STATUS')}</th>
+                            <th width="150">{:L('ACTIONS')}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <foreach name="roles" item="vo">
+                            <tr>
+                                <td>{$vo.id}</td>
+                                <td>{$vo.name}</td>
+                                <td>{$vo.remark}</td>
+                                <td>
+                                    <if condition="$vo['status'] eq 1">
+                                        <font color="red">√</font>
+                                        <else/>
+                                        <font color="red">╳</font>
+                                    </if>
+                                </td>
+                                <td>
+                                    <if condition="$vo['id'] eq 1">
+                                        <font color="#cccccc">{:L('ROLE_SETTING')}</font>|
+                                        <!-- <a href="javascript:open_iframe_dialog('{:U('rbac/member',array('id'=>$vo['id']))}','成员管理');">成员管理</a> | -->
+                                        <font color="#cccccc">{:L('EDIT')}</font> |
+                                        <font color="#cccccc">{:L('DELETE')}</font>
+                                        <else/>
+                                        <a href="{:U('Rbac/authorize',array('id'=>$vo['id']))}">{:L('ROLE_SETTING')}</a>|
+                                        <!-- <a href="javascript:open_iframe_dialog('{:U('rbac/member',array('id'=>$vo['id']))}','成员管理');">成员管理</a>| -->
+                                        <a href="{:U('Rbac/roleedit',array('id'=>$vo['id']))}">{:L('EDIT')}</a>|
+                                        <a class="js-ajax-delete" href="{:U('Rbac/roledelete',array('id'=>$vo['id']))}">{:L('DELETE')}</a>
+                                    </if>
+                                </td>
+                            </tr>
+                        </foreach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

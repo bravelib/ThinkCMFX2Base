@@ -1,0 +1,33 @@
+<admintpl file="header"/>
+<style>
+    li {
+        list-style: none;
+    }
+</style>
+</head>
+<body>
+<div class="wrap">
+    <div class="row">
+        <div class="col-lg-6 col-sm-6 col-xs-12">
+            <div class="panel panel-green">
+                <div class="panel-heading">
+                    {$msgTitle}
+                </div>
+                <div class="panel-body">
+                    {$message}
+                </div>
+                <div class="panel-footer">
+                    <a href="{$jumpUrl}" class="btn btn-default">返回</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__PUBLIC__/js/common.js"></script>
+<script>
+    setTimeout(function () {
+        parent.location.href = '{$jumpUrl}';
+    }, 3000);
+</script>
+</body>
+</html>
